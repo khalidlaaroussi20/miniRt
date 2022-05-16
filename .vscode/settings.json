@@ -1,0 +1,14 @@
+{
+	"makefile.extensionOutputFolder": "./.vscode",
+	"files.associations": {
+		"tuples.h": "c",
+		"vector": "c",
+		"minirt.h": "c",
+		"light.h": "c",
+		"precomputed.h": "c",
+		"world.h": "c",
+		"intersections.h": "c",
+		"ray.h": "c",
+		"shading.h": "c"
+	}
+}

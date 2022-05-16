@@ -44,9 +44,15 @@ t_intersections *intersect(t_object *object,t_ray ray)
     t_intersections *head_entersections = NULL;
 	t_sphere *sphere = object ->object;
     t_tuple sphere_to_ray;
-    t_ray ray2 = ray;
+    t_ray ray2;
 
-    ray2 = transform_ray(ray,*invert_matrix(sphere->transformation));
+	t_matrices *invert = invert_matrix(sphere->transformation);
+	if (invert == 0)
+	{
+		printf("is null\n");
+		exit (0);
+	}
+    ray2 = transform_ray(ray,*invert);
     sphere_to_ray =  substract_tuple(ray2.origin,sphere->origin);
     vars.a = dot_product(ray2.direction, ray2.direction);
     vars.b = 2 * dot_product(ray2.direction, sphere_to_ray);

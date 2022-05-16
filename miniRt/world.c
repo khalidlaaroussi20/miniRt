@@ -22,7 +22,7 @@ t_world default_world()//just for test
 	s1 ->material.specular = 0.2;
 	add_object(&objects,create_object(SPHERE,s1));
 	s2 = sphere();
-	set_tranform(s2,scaling(make_tuple(0.5, 0.5, 0.5,VECTOR)));
+	set_tranform(s2,translation(make_tuple(100, 200, 0,VECTOR)));
 	add_object(&objects,create_object(SPHERE,s2));
 	world.objects = objects;
 	return (world);
@@ -75,3 +75,5 @@ void draw_world(t_tuple camera, float z_image_plane)
         y++;
     }
 }
+
+

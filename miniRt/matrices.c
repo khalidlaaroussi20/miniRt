@@ -342,7 +342,6 @@ t_matrices *invert_matrix(t_matrices *matrix)
     det = determinant(matrix);
     if(is_equal(det,0))
     {
-        printf("here %.2f\n",det);
         return NULL;
     }
     inverted = cofactor_matrix(matrix);
