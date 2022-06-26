@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 10:54:31 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 17:32:51 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:48:02 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		parse_error(void);
 int			len(char **line);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*to_upper(char *line);
-float		min(float a,float b);
-float		max(float a,float b);
+float		min(float a, float b);
+float		max(float a, float b);
 
 #endif

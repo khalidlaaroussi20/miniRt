@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:35:15 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 16:06:59 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/06/26 14:40:14 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,14 @@ char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
 char	*to_upper(char *line);
 int		ft_toupper(int a);
+void	check_extention(char *filename);
+int		exitit(int button, void *unused);
+void	failure_exit(char *message);
 // drawing functions
 
-void	plot(int x, int y, t_tuple color);
+void	plot(int x, int y, t_tuple color, t_parameters *param);
 void	image_pixel_put(t_parameters *param, \
-				t_point point, int color);
+				t_tuple point, int color);
+void	render(t_camera camera, \
+				t_world world, t_parameters *param);
 #endif
