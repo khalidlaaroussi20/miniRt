@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 11:04:13 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 11:06:02 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:49:55 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_matrices	*view_transformation(t_tuple from, t_tuple to, t_tuple up)
 	orientation->matrix[2][1] = negate_val(forward.y);
 	orientation->matrix[2][2] = negate_val(forward.z);
 	transformation = multiply_matrices(orientation, \
-						translation(negate_tuple(from)));
+						translation(negate_tuple(from)), FALSE, TRUE);
 	free_matrix(orientation);
 	return (transformation);
 }
@@ -85,6 +85,12 @@ t_ray	ray_for_pixel(t_camera camera, int x, int y)
 void	set_camera_transformation(t_camera *camera, \
 					t_tuple from, t_tuple to, t_tuple up)
 {
+	t_matrices	*inverse_matrix;
+
+	free_matrix(camera->transform);
 	camera->transform = view_transformation(from, to, up);
-	camera->inverse_transform = invert_matrix(camera->transform);
+	inverse_matrix = invert_matrix(camera->transform);
+	if (inverse_matrix)
+		free_matrix(camera->inverse_transform);
+	camera->inverse_transform = inverse_matrix;
 }

@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:41:40 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 17:13:55 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:00:18 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_object	*plane_make(int fd)
 		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	return ((t_object *)shape);
 }
 
@@ -51,6 +53,8 @@ t_object	*cylinder_make(int fd)
 		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	return ((t_object *)shape);
 }
 
@@ -72,6 +76,8 @@ t_object	*cone_make(int fd)
 		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	return ((t_object *)shape);
 }
 
@@ -93,5 +99,7 @@ t_object	*sphere_make(int fd)
 		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	return ((t_object *)shape);
 }

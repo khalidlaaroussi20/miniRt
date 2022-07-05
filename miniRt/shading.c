@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:18:09 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 14:19:06 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:50:51 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ int	is_shadowed(t_world *world, t_light *light, t_tuple point)
 	if (hit_intersection)
 	{
 		if (hit_intersection->t < magnitude)
+		{
+			free_list_intersection(shadow_intersect);
 			return (TRUE);
+		}
 	}
+	free_list_intersection(shadow_intersect);
 	return (FALSE);
 }

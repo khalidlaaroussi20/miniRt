@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:35:15 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/26 14:40:14 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:41:20 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,8 @@ void	image_pixel_put(t_parameters *param, \
 				t_tuple point, int color);
 void	render(t_camera camera, \
 				t_world world, t_parameters *param);
+
+// free  ressource
+
+void	free_ressource(t_world *world, t_camera *camera);
 #endif

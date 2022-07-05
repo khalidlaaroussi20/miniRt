@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 11:36:42 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 17:05:29 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/04 21:29:27 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	free_list_intersection(t_intersections *list_intersections)
 	t_intersections	*tmp;
 
 	tmp = list_intersections;
-	while (tmp->next)
+	while (tmp)
 	{
 		list_intersections = tmp->next;
 		free(tmp);

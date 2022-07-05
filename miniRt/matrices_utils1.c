@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 12:22:50 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 12:30:25 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:34:23 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ float	element_multiplication(t_matrices *matrix1, \
 	return (sum);
 }
 
-t_matrices	*multiply_matrices(t_matrices *matrix1, t_matrices *matrix2)
+t_matrices	*multiply_matrices(t_matrices *matrix1, t_matrices *matrix2, \
+			int is_free_mat1, int is_free_mat2)
 {
 	t_matrices	*final_matrix;
 	int			current_row;
@@ -49,6 +50,10 @@ t_matrices	*multiply_matrices(t_matrices *matrix1, t_matrices *matrix2)
 		}
 		current_row++;
 	}
+	if (is_free_mat1)
+		free_matrix(matrix1);
+	if (is_free_mat2)
+		free_matrix(matrix2);
 	return (final_matrix);
 }
 

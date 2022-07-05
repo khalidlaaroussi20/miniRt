@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:15:46 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 14:16:41 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:43:59 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ t_pattern	*make_pattern(t_tuple white, t_tuple black, \
 	pattern->color_b = black;
 	pattern->type_pattern = type_pattern;
 	pattern->transformation = identity_matrix(DEFAULT_DIMENSION);
-	pattern->is_3d = is_3d;
 	pattern->inverse_transformation = identity_matrix(DEFAULT_DIMENSION);
+	pattern->is_3d = is_3d;
 	set_local_pattern_function(pattern);
 	return (pattern);
 }
@@ -54,12 +54,11 @@ void	set_transformation_pattern(t_pattern *pattern, t_matrices *matrix)
 
 	if (!pattern)
 		return ;
+	free_matrix(pattern->transformation);
 	pattern->transformation = matrix;
 	inverse_transform = invert_matrix(matrix);
 	if (inverse_transform)
 		pattern->inverse_transformation = inverse_transform;
-	else
-		pattern->inverse_transformation = identity_matrix(DEFAULT_DIMENSION);
 }
 
 t_tuple	pattern_at_shape(t_pattern *pattern, t_tuple point, t_object *shape)

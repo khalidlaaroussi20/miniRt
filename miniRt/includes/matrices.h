@@ -51,7 +51,8 @@ void		null_matrix(t_matrices *matrix);
 t_matrices	*create_matrix(int rows, int cols);
 int			fill_diagonal(t_matrices *matrix, float number);
 t_matrices	*identity_matrix(int dimension);
-t_matrices	*multiply_matrices(t_matrices *matrix1, t_matrices *matrix2);
+t_matrices	*multiply_matrices(t_matrices *matrix1, t_matrices *matrix2, \
+				int is_free_mat1, int is_free_mat2);
 t_tuple		multiply_matrix_tuple(t_matrices matrix, t_tuple tuple);
 t_matrices	*get_submatrix(t_matrices *matrix, \
 					int current_row, int current_col);

@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:15:58 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 17:09:39 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:43:06 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	set_refractives_idx(t_precomputed *pre_computed, \
 		}		
 		list = list ->next;
 	}
+	free_list_intersection(containers);
 }
 
 t_precomputed	prepare_computations(t_intersections *intersection, \

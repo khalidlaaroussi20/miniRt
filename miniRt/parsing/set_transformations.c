@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 17:34:43 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 18:31:54 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:29:27 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,15 @@ t_matrices	*rotation_make(t_matrices *matrix, char *line, char c)
 
 	angle = degree_to_radian(float_parse(line));
 	if (c == 'x')
-	{
 		transformation = rotation_x(angle);
-		transformed_matrix = multiply_matrices(transformation, matrix);
-	}
 	else if (c == 'y')
-	{
 		transformation = rotation_y(angle);
-		transformed_matrix = multiply_matrices(transformation, matrix);
-	}
 	else if (c == 'z')
-	{
 		transformation = rotation_z(angle);
-		transformed_matrix = multiply_matrices(transformation, matrix);
-	}
-	free(matrix);
-	free(transformation);
+	transformed_matrix = multiply_matrices(transformation, \
+							matrix, FALSE, FALSE);
+	free_matrix(matrix);
+	free_matrix(transformation);
 	return (transformed_matrix);
 }
 
@@ -49,15 +42,17 @@ t_matrices	*translate_scale_make(t_matrices *matrix, char *line, char c)
 	if (c == 't')
 	{
 		transformation = translation(transformation_vector);
-		transformed_matrix = multiply_matrices(transformation, matrix);
+		transformed_matrix = multiply_matrices(transformation, \
+							matrix, FALSE, FALSE);
 	}
 	else if (c == 's')
 	{
 		transformation = scaling(transformation_vector);
-		transformed_matrix = multiply_matrices(transformation, matrix);
+		transformed_matrix = multiply_matrices(transformation, \
+							matrix, FALSE, FALSE);
 	}
-	free(matrix);
-	free(transformation);
+	free_matrix(matrix);
+	free_matrix(transformation);
 	return (transformed_matrix);
 }
 
@@ -76,16 +71,20 @@ t_matrices	*shear_make(t_matrices *matrix, char *line)
 	sh.hzx = float_parse(shear[4]);
 	sh.hzy = float_parse(shear[5]);
 	transformation = shearing(sh);
-	transformed_matrix = multiply_matrices(transformation, matrix);
+	transformed_matrix = multiply_matrices(transformation, \
+						matrix, FALSE, FALSE);
 	free_split(shear);
-	free(matrix);
-	free(transformation);
+	free_matrix(matrix);
+	free_matrix(transformation);
 	return (transformed_matrix);
 }
 
 t_matrices	*set_transformation_matrice(t_matrices *transformations, \
 			char **lines, int i)
 {
+	t_matrices	*old_transformation;
+
+	old_transformation = transformations;
 	if (!ft_strncmp(to_upper(lines[i]), "ROTX", 4))
 		transformations = rotation_make(transformations, lines[i + 1], 'x');
 	else if (!ft_strncmp(to_upper(lines[i]), "ROTY", 4))

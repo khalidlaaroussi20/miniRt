@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:33:51 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 19:10:11 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:25:33 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ t_matrices	*get_coordinate_matrix(char *line, t_matrices *matrix)
 
 	translation_vector = tuple_set(line);
 	transformations_matrix = translation(translation_vector);
-	coordinates_matrix = multiply_matrices(transformations_matrix, matrix);
-	free(matrix);
-	free(transformations_matrix);
+	coordinates_matrix = multiply_matrices(transformations_matrix, \
+						matrix, FALSE, FALSE);
+	free_matrix(matrix);
+	free_matrix(transformations_matrix);
 	return (coordinates_matrix);
 }
 
@@ -45,9 +46,10 @@ t_matrices	*coordinate_set(t_matrices *matrix, char *line, int fd)
 	{
 		transformations_matrix = get_transformations(transformations);
 		coordinates_matrix = matrix;
-		matrix = multiply_matrices(transformations_matrix, matrix);
-		free(coordinates_matrix);
-		free(transformations_matrix);
+		matrix = multiply_matrices(transformations_matrix, matrix, \
+				FALSE, FALSE);
+		free_matrix(coordinates_matrix);
+		free_matrix(transformations_matrix);
 		coordinates_matrix = 0;
 	}
 	return (get_coordinate_matrix(line, matrix));

@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 14:16:46 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 14:17:24 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:30:51 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_plane	*plane(void)
 
 	plane = malloc(sizeof(t_plane));
 	plane->transformation = identity_matrix(DEFAULT_DIMENSION);
-	plane->inverse_transformation = NULL;
 	plane->material = make_material();
 	return (plane);
 }

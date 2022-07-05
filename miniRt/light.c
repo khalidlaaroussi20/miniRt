@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 11:41:51 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 16:55:29 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:34:00 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_tuple	color_at(t_world world, t_ray ray, int max_depth)
 	t_intersections	*hit_intersection;
 	t_precomputed	comps;
 
+	list_intersections = NULL;
 	list_intersections = intersect_word(world, ray);
 	hit_intersection = hit(list_intersections);
 	if (hit_intersection)
@@ -43,6 +44,7 @@ t_tuple	color_at(t_world world, t_ray ray, int max_depth)
 		free_list_intersection(list_intersections);
 		return (shade_hit(world, comps, max_depth));
 	}
+	free_list_intersection(list_intersections);
 	return (black());
 }
 

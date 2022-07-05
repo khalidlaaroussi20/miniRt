@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 10:54:31 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/26 14:48:02 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:07:21 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ float		specular_set(float default_specular, char *line);
 float		diffuse_set(float default_diffuse, char *line);
 t_matrices	*diameter_set(t_matrices *matrix, char *line, char c);
 void		height_set(float *_min, float *_max, char *line);
+void		set_max(float *_min, float *_max, char *line);
 int			close_set(char *line);
 t_tuple		tuple_from_line(char *line);
 t_tuple		tuple_set(char *line);

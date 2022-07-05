@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:40:29 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 18:58:41 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:32:11 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ void	ambient_make(t_world *world, int fd)
 	while (ft_strncmp(line, "END", 3))
 	{
 		if (line)
-		{
 			free(line);
-			line = 0;
-		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 }
 
 t_light	*light_make(int fd)
@@ -56,12 +55,11 @@ t_light	*light_make(int fd)
 	while (ft_strncmp(line, "END", 3))
 	{
 		if (line)
-		{
 			free(line);
-			line = 0;
-		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 	return (light);
 }
 
@@ -85,12 +83,11 @@ void	camera_make(t_camera *camera, int fd)
 	while (ft_strncmp(line, "END", 3))
 	{
 		if (line)
-		{
 			free(line);
-			line = 0;
-		}
 		line = get_next_line(fd);
 	}
+	if (line)
+		free(line);
 }
 
 void	make_scene(t_camera *camera, t_object **objects, char *line, int fd)
@@ -128,6 +125,7 @@ void	parse_file(t_world *world, t_camera *camera, int fd)
 			ambient_make(world, fd);
 		else
 			make_scene(camera, &objects, line, fd);
+		free (line);
 	}
 	printf("parsing done\n");
 	world->objects = objects;

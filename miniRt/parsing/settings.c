@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 17:32:18 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 18:49:54 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:48:34 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	close_set(char *line)
 		return (TRUE);
 	}
 	if (!ft_strncmp(to_upper(line), "TRUE", 4))
+	{
+		free(line);
 		return (TRUE);
+	}
+	free(line);
 	return (FALSE);
 }
 

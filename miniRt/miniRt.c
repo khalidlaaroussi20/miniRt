@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:49 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/26 14:47:33 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:46:30 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,36 @@ int	esc_hook(int button, void *param)
 	return (0);
 }
 
+void	free_ressources(t_world *world)
+{
+	t_object	*objects;
+	t_light		*lights =  world->light;
+
+	lights =  world->light;
+	objects = world->objects;
+	while (objects)
+	{
+		free_matrix(objects->inverse_transformation);
+		free_matrix(objects->transformation);
+		if (objects->material.pattern)
+		{
+			free_matrix(objects->material.pattern->transformation);
+			free_matrix(objects->material.pattern->inverse_transformation);
+			free(objects->material.pattern);
+		}
+		free(objects->object);
+		t_object *next = objects ->next;
+		free(objects);
+		objects = next;
+	}
+	while (lights)
+	{
+		t_light *next_light = lights ->next;
+		free(lights);
+		lights = next_light;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_camera		camera;
@@ -47,9 +77,15 @@ int	main(int argc, char **argv)
 		failure_exit("fail to open file\n");
 	parse_file(&world, &camera, fd);
 	close (fd);
+	if (world.light == NULL || world.objects == NULL)
+		failure_exit("Empty file\n");
 	param.camera = camera;
 	initializemlx(&param);
 	render(camera, world, &param);
+	free_ressources(&world);
+	free_matrix(camera.inverse_transform);
+	free_matrix(camera.transform);
+	system("leaks miniRt");
 	mlx_put_image_to_window(param.mlx_ptre, \
 			param.win_ptre, param.img_ptre, 0, 0);
 	mlx_hook(param.win_ptre, 02, 0L, esc_hook, &param);

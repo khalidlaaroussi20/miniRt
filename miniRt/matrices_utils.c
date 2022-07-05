@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:54:12 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 15:54:14 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/04 20:44:47 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	matrix_destroyer(t_matrices *matrix)
 		free(matrix->matrix[i]);
 		i++;
 	}
+	free(matrix->matrix);
 }
 
 void	free_matrix(t_matrices *matrix)

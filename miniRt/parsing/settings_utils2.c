@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:39:35 by klaarous          #+#    #+#             */
-/*   Updated: 2022/06/25 18:59:34 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:41:28 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	pattern_set(t_material *material, char *line, int fd, int is_3d)
 	char		**parameters;
 	t_matrices	*pattern_transformation;
 
+	pattern_transformation = NULL;
 	if (!ft_strncmp(to_upper(line), "NULL", 4))
 	{
 		free(line);
