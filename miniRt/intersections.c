@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 11:32:12 by klaarous          #+#    #+#             */
-/*   Updated: 2022/07/04 22:37:24 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:45:44 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_intersections	*hit(t_intersections *l_intersections)
 {
 	while (l_intersections)
 	{
-		if (l_intersections->t >= 0)
+		if (l_intersections->t >= EPSILON)
 			return (l_intersections);
 		l_intersections = l_intersections->next;
 	}

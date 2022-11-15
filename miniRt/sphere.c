@@ -49,7 +49,7 @@ t_intersections	*intersect_sphere(t_object *shape, t_ray ray)
 	vars.c = dot_product(substract_tuple(ray.origin, sphere->origin), \
 								sphere_to_ray) - 1;
 	vars.determinant = (vars.b * vars.b) - (4.0 * vars.a * vars.c);
-	if (vars.determinant < 0)
+	if (vars.determinant < EPSILON)
 		return (NULL);
 	else
 	{

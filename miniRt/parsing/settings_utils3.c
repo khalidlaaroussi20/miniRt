@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:46:16 by klaarous          #+#    #+#             */
-/*   Updated: 2022/07/05 17:06:50 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:34:50 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_matrices	*diameter_set(t_matrices *matrix, char *line, char c)
 	if (c == 's')
 		transformation = scaling(make_tuple(d, d, d, VECTOR));
 	else
-		transformation = scaling(make_tuple(d, 1, 1, VECTOR));
+		transformation = scaling(make_tuple(d, d, 1, VECTOR));
 	transformed_matrix = multiply_matrices(transformation, \
 						matrix, FALSE, FALSE);
 	free_matrix(transformation);
@@ -82,7 +82,6 @@ void	height_set(float *_min, float *_max, char *line)
 	free(line);
 }
 
-
 void	set_max(float *_min, float *_max, char *line)
 {
 	*_min = 0;
@@ -92,7 +91,6 @@ void	set_max(float *_min, float *_max, char *line)
 		*_max = 2;
 		return ;
 	}
-	
 	*_max = max(float_parse(line), 0);
 	free(line);
 }

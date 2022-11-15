@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:15:58 by klaarous          #+#    #+#             */
-/*   Updated: 2022/07/04 22:43:06 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:59:21 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_precomputed	prepare_computations(t_intersections *intersection, \
 		pre_computed.is_inside = FALSE;
 	pre_computed.reflecv = reflect(ray.direction, pre_computed.normalv);
 	pre_computed.material = intersection->object->material;
-	epsilon_normal = tuple_scalar_multiplication(pre_computed.normalv, 0.003);
+	epsilon_normal = tuple_scalar_multiplication(pre_computed.normalv, EPSILON);
 	pre_computed.over_point = add_tuple(pre_computed.point, epsilon_normal);
 	pre_computed.under_point = substract_tuple(pre_computed.point, \
 												epsilon_normal);
