@@ -6,7 +6,7 @@
 #    By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/03 18:14:03 by mel-amma          #+#    #+#              #
-#    Updated: 2022/11/14 18:47:14 by klaarous         ###   ########.fr        #
+#    Updated: 2022/11/15 15:32:29 by klaarous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = miniRt.c helpers.c split.c \
 NAME = miniRt
 LIBRARIES = ../libmlx_Linux.a -lX11 -lXext
 RM = rm -f
-CFLAGS =  -g -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit #-fsanitize=address
+CFLAGS =  -g -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit -fsanitize=address
 
 
 all : $(NAME)

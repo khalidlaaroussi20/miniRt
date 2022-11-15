@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:41:40 by klaarous          #+#    #+#             */
-/*   Updated: 2022/11/14 18:09:26 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:30:57 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_object	*plane_make(int fd)
 	shape = plane();
 	plane_settings(fd, shape, line);
 	line = get_next_line(fd);
-	while (ft_strncmp(line, "END", 3))
+	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
 		{
@@ -44,7 +44,7 @@ t_object	*cylinder_make(int fd)
 	shape = cylinder();
 	cylinder_settings(fd, shape, line);
 	line = get_next_line(fd);
-	while (ft_strncmp(line, "END", 3))
+	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
 		{
@@ -67,7 +67,7 @@ t_object	*cone_make(int fd)
 	shape = cone();
 	cone_settings(fd, shape, line);
 	line = get_next_line(fd);
-	while (ft_strncmp(line, "END", 3))
+	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
 		{

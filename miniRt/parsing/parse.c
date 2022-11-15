@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:40:29 by klaarous          #+#    #+#             */
-/*   Updated: 2022/07/05 16:32:11 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:42:56 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ambient_make(t_world *world, int fd)
 	else
 		world->ambient_color = color_set(line);
 	world->ambient_ratio = ambient_ratio;
-	while (ft_strncmp(line, "END", 3))
+	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
 			free(line);
@@ -52,7 +52,7 @@ t_light	*light_make(int fd)
 	light = make_light(coordinates, \
 	tuple_scalar_multiplication(color_set(line), brightness));
 	line = get_next_line(fd);
-	while (ft_strncmp(line, "END", 3))
+	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
 			free(line);
@@ -80,7 +80,7 @@ void	camera_make(t_camera *camera, int fd)
 	set_camera_transformation(camera, camera_origin, \
 		make_tuple(0, 1, 0, POINT), up);
 	line = get_next_line(fd);
-	while (ft_strncmp(line, "END", 3))
+	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
 			free(line);

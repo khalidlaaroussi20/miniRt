@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 14:45:49 by klaarous          #+#    #+#             */
-/*   Updated: 2022/11/14 18:48:01 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:26:15 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	parse_file(&world, &camera, fd);
 	close (fd);
 	if (world.light == NULL || world.objects == NULL)
-		failure_exit("Empty file\n");
+		failure_exit("Darkness\n");
 	param.camera = camera;
 	initializemlx(&param);
 	render(camera, world, &param);

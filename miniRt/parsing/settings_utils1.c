@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:33:51 by klaarous          #+#    #+#             */
-/*   Updated: 2022/07/05 16:25:33 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:43:15 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ t_tuple	color_set(char *line)
 		return (make_color(1, 0, 0));
 	}
 	vector = ft_split(line, ',');
+	if (len(vector) < 3)
+		return (make_color(0, 0, 0));
 	r = min(max(0, float_parse(vector[0])), 255) / 255;
 	g = min(max(0, float_parse(vector[1])), 255) / 255;
 	b = min(max(0, float_parse(vector[2])), 255) / 255;

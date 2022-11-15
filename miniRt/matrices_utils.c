@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:54:12 by klaarous          #+#    #+#             */
-/*   Updated: 2022/07/04 20:44:47 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:38:43 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	matrix_destroyer(t_matrices *matrix)
 	int	i;
 
 	i = 0;
+	if (!matrix)
+		return ;
 	while (i < matrix->rows_num)
 	{
 		free(matrix->matrix[i]);
