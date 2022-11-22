@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 11:41:51 by klaarous          #+#    #+#             */
-/*   Updated: 2022/11/08 15:57:02 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/19 12:10:03 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ t_tuple	shade_hit(t_world world, t_precomputed comps, int max_depth)
 	t_shade_hit_vars	vars;
 
 	vars.c_surface = black();
+	vars.c_reflection = black();
+	vars.c_refraction = black();
 	vars.curr_light = world.light;
 	while (vars.curr_light)
 	{

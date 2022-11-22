@@ -6,7 +6,7 @@
 /*   By: klaarous <klaarous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 16:40:29 by klaarous          #+#    #+#             */
-/*   Updated: 2022/11/15 15:42:56 by klaarous         ###   ########.fr       */
+/*   Updated: 2022/11/19 11:19:34 by klaarous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ambient_make(t_world *world, int fd)
 	else
 		world->ambient_color = color_set(line);
 	world->ambient_ratio = ambient_ratio;
+	line = get_next_line(fd);
 	while (line && ft_strncmp(line, "END", 3))
 	{
 		if (line)
